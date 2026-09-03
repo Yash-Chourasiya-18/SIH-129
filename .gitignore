@@ -2,13 +2,37 @@
 __pycache__/
 *.py[cod]
 *$py.class
-*.db
-.env
-.venv
-venv/
-
-# Node / React
-node_modules/
+*.so
+.Python
+env/
+build/
+develop-eggs/
 dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+*.db
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Environment variables
+.env
+!.env.example
+
+# IDE / OS
+.vscode/
+.idea/
 .DS_Store
-*.log
+Thumbs.db
