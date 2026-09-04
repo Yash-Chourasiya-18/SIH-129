@@ -22,8 +22,13 @@ from app.routers import auth, mock_apis, services, officer, admin
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup: initialize DB tables
+    # Startup: initialize DB tables & seed demo data
     await init_db()
+    try:
+        from seed_data import seed
+        await seed()
+    except Exception as e:
+        print(f"Startup seed notice: {e}")
     yield
     # Shutdown: nothing to clean up for SQLite
 
