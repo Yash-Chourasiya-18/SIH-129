@@ -36,7 +36,7 @@ export default function AuditLogs() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '2rem', padding: '0 0.25rem' }}>
           <ShieldCheck size={20} color="#60a5fa" />
           <div>
-            <div style={{ fontSize: '0.875rem', fontWeight: 800 }}>MahaSetu</div>
+            <div style={{ fontSize: '0.875rem', fontWeight: 800 }}>Juvia</div>
             <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>Admin Portal</div>
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function AuditLogs() {
         <div style={{ marginBottom: '1.5rem' }}>
           <h1 style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0 }}>Audit Logs</h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.8125rem', margin: '4px 0 0' }}>
-            Complete record of every inter-system API call made by MahaSetu
+            Complete record of every inter-system API call made by Juvia
           </p>
         </div>
 

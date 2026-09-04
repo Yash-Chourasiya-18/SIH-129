@@ -36,7 +36,7 @@ export default function Login() {
           <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 56, height: 56, background: 'rgba(59,130,246,0.15)', borderRadius: 16, border: '1px solid rgba(59,130,246,0.3)', marginBottom: '1rem' }}>
             <ShieldCheck size={28} color="#60a5fa" />
           </div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>MahaSetu</h1>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>Juvia</h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.8125rem', marginTop: 4, marginBottom: 0 }}>Government Digital Interoperability Platform</p>
           <div style={{ marginTop: '0.5rem' }}>
             <span className="badge badge-info">SIH 2026 | Problem Statement #129</span>

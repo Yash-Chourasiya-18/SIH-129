@@ -14,7 +14,7 @@ export default function CitizenDashboard() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <ShieldCheck size={22} color="#60a5fa" />
           <div>
-            <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)' }}>MahaSetu</span>
+            <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)' }}>Juvia</span>
             <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginLeft: 8 }}>Citizen Portal</span>
           </div>
         </div>
@@ -35,7 +35,7 @@ export default function CitizenDashboard() {
             Welcome, {user?.full_name?.split(' ')[0]} 👋
           </h1>
           <p style={{ color: 'var(--text-muted)', margin: '6px 0 0', fontSize: '0.875rem' }}>
-            Access integrated government services through MahaSetu's secure interoperability platform.
+            Access integrated government services through Juvia's secure interoperability platform.
           </p>
         </div>
 

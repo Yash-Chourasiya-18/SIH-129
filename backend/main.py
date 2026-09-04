@@ -1,5 +1,5 @@
 """
-MahaSetu Backend — FastAPI Application Entry Point
+Juvia Backend — FastAPI Application Entry Point
 Secure Government Digital Interoperability & Service Orchestration Platform
 SIH 2026 | Problem Statement #129 | Government of Maharashtra
 """
@@ -34,7 +34,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="MahaSetu API",
+    title="Juvia API",
     description=(
         "Secure Government Digital Interoperability & Service Orchestration Platform. "
         "SIH 2026 | Problem Statement #129 | Government of Maharashtra. "

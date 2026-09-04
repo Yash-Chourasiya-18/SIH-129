@@ -52,7 +52,7 @@ export default function OfficerDashboard() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '2rem', padding: '0 0.25rem' }}>
           <ShieldCheck size={20} color="#60a5fa" />
           <div>
-            <div style={{ fontSize: '0.875rem', fontWeight: 800 }}>MahaSetu</div>
+            <div style={{ fontSize: '0.875rem', fontWeight: 800 }}>Juvia</div>
             <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>Officer Portal</div>
           </div>
         </div>

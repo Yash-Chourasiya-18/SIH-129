@@ -65,7 +65,7 @@ export default function ScholarshipApply() {
             <div style={{ fontWeight: 600, fontSize: '0.875rem', marginBottom: '0.5rem' }}>How this works</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
               {[
-                '1. MahaSetu authenticates your request and identifies required data',
+                '1. Juvia authenticates your request and identifies required data',
                 '2. Citizen Registry, Education, Revenue & Welfare APIs are called concurrently',
                 '3. Responses from 4 different schemas are normalized into a unified model',
                 '4. Deterministic eligibility rules are evaluated',
