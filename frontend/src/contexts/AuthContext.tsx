@@ -26,8 +26,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('mahasetu_token')
-    const storedUser = localStorage.getItem('mahasetu_user')
+    const storedToken = localStorage.getItem('juvia_token')
+    const storedUser = localStorage.getItem('juvia_user')
     if (storedToken && storedUser) {
       setToken(storedToken)
       setUser(JSON.parse(storedUser))
@@ -38,19 +38,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (username: string, password: string) => {
     const res = await apiLogin(username, password)
     const { access_token, role, full_name, citizen_id } = res.data
-    localStorage.setItem('mahasetu_token', access_token)
+    localStorage.setItem('juvia_token', access_token)
 
     // Fetch full user profile
     const meRes = await getMe()
     const userData = meRes.data
-    localStorage.setItem('mahasetu_user', JSON.stringify(userData))
+    localStorage.setItem('juvia_user', JSON.stringify(userData))
     setToken(access_token)
     setUser(userData)
   }
 
   const logout = () => {
-    localStorage.removeItem('mahasetu_token')
-    localStorage.removeItem('mahasetu_user')
+    localStorage.removeItem('juvia_token')
+    localStorage.removeItem('juvia_user')
     setToken(null)
     setUser(null)
   }
