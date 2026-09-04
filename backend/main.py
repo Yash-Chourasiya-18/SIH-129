@@ -3,7 +3,12 @@ MahaSetu Backend — FastAPI Application Entry Point
 Secure Government Digital Interoperability & Service Orchestration Platform
 SIH 2026 | Problem Statement #129 | Government of Maharashtra
 """
+import sys
 import os
+
+# Ensure backend directory is in python path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
