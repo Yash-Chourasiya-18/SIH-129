@@ -3,9 +3,12 @@ MahaSetu Backend — FastAPI Application Entry Point
 Secure Government Digital Interoperability & Service Orchestration Platform
 SIH 2026 | Problem Statement #129 | Government of Maharashtra
 """
+import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 from app.core.config import settings
 from app.core.database import init_db
@@ -36,7 +39,7 @@ app = FastAPI(
 # CORS — allow frontend dev server
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_URL, "http://localhost:5173", "http://localhost:3000"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -50,18 +53,25 @@ app.include_router(officer.router)
 app.include_router(admin.router)
 
 
-@app.get("/", tags=["Health"])
-async def root():
-    return {
-        "service": "MahaSetu",
-        "version": "1.0.0",
-        "status": "operational",
-        "tagline": "Secure Government Digital Interoperability & Service Orchestration Platform",
-        "disclaimer": "PROTOTYPE — Synthetic data only. Not connected to real government systems.",
-        "docs": "/docs",
-    }
-
-
 @app.get("/health", tags=["Health"])
 async def health():
     return {"status": "ok"}
+
+
+# Serve Frontend dist files if available (Single-Server Deployment)
+frontend_dist_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "dist"))
+if os.path.exists(frontend_dist_path):
+    assets_dir = os.path.join(frontend_dist_path, "assets")
+    if os.path.exists(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    async def serve_react_app(full_path: str):
+        # Ignore API and docs routes
+        if full_path.startswith("api/") or full_path == "docs" or full_path == "redoc" or full_path == "openapi.json":
+            return None
+        file_path = os.path.join(frontend_dist_path, full_path)
+        if full_path and os.path.isfile(file_path):
+            return FileResponse(file_path)
+        return FileResponse(os.path.join(frontend_dist_path, "index.html"))
+
