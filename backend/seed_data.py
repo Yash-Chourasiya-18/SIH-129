@@ -43,20 +43,24 @@ async def seed():
         # Seed users
         for u in DEMO_USERS:
             existing = await db.execute(select(User).where(User.username == u["username"]))
-            if existing.scalar_one_or_none():
-                print(f"  [skip] User '{u['username']}' already exists")
-                continue
-            user = User(
-                username=u["username"],
-                full_name=u["full_name"],
-                hashed_password=hash_password(u["password"]),
-                role=u["role"],
-                citizen_id=u["citizen_id"],
-                district=u["district"],
-                is_active=True,
-            )
-            db.add(user)
-            print(f"  [+] Created user: {u['username']} [{u['role']}]")
+            user = existing.scalar_one_or_none()
+            if user:
+                user.hashed_password = hash_password(u["password"])
+                user.is_active = True
+                db.add(user)
+                print(f"  [~] Updated user password: '{u['username']}'")
+            else:
+                user = User(
+                    username=u["username"],
+                    full_name=u["full_name"],
+                    hashed_password=hash_password(u["password"]),
+                    role=u["role"],
+                    citizen_id=u["citizen_id"],
+                    district=u["district"],
+                    is_active=True,
+                )
+                db.add(user)
+                print(f"  [+] Created user: {u['username']} [{u['role']}]")
 
         # Seed system status rows
         for dept in DEPARTMENTS:
